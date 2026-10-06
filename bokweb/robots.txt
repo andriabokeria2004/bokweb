@@ -1,0 +1,6 @@
+# BokWeb
+User-agent: *
+Allow: /
+Disallow: /api/
+
+Sitemap: https://bokweb.ge/sitemap.xml

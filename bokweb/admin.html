@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<!-- Admin panel is fully self-contained: lock everything to same-origin.
+     The Node server additionally sends CSP + X-Frame-Options: DENY as headers. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data:; media-src 'self' blob:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="same-origin">
+<meta name="robots" content="noindex, nofollow">
+<title>BokWeb — Admin panel</title>
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<!-- ==================== LOGIN ==================== -->
+<div class="lg" id="lgWrap">
+  <form class="lg-card" id="lgForm" novalidate>
+    <div class="lg-logo">Bok<span>Web</span><em>Admin</em></div>
+    <h1>Sign in · შესვლა</h1>
+    <p class="lg-sub" id="lgSub">Enter your admin login and password.<br>შეიყვანეთ ადმინის სახელი და პაროლი.</p>
+
+    <div id="lgFields">
+      <label class="lg-lab">Login · მომხმარებელი
+        <input id="lgUser" autocomplete="username" autocapitalize="none" spellcheck="false">
+      </label>
+      <label class="lg-lab">Password · პაროლი
+        <span class="lg-passwrap">
+          <input id="lgPass" type="password" autocomplete="current-password">
+          <button type="button" class="lg-eye" id="lgEye" aria-label="Show password">Show</button>
+        </span>
+      </label>
+    </div>
+
+    <div id="lgTokField" hidden>
+      <label class="lg-lab">Admin token · ტოკენი
+        <input id="lgTok" type="password" autocomplete="off" spellcheck="false" placeholder="from the server console">
+      </label>
+      <p class="lg-hint">Printed when you run <code>node server.js</code>, saved in
+        <code>data/secret.txt</code>. Always works as a master key.</p>
+    </div>
+
+    <div class="lg-err" id="lgErr" hidden></div>
+
+    <button class="btn btn-primary lg-btn" type="submit" id="lgBtn">Sign in · შესვლა</button>
+    <button class="lg-alt" type="button" id="lgTokMode">Sign in with admin token instead</button>
+
+    <div class="lg-off" id="lgOff" hidden>
+      <b>Server is not reachable</b>
+      <p class="lg-hint">The admin panel needs the server. Open a terminal in the site folder,
+        run <code>node server.js</code>, then open
+        <code>http://localhost:3000/admin.html</code>.</p>
+      <button class="btn" type="button" id="lgRetry">Try again</button>
+    </div>
+  </form>
+</div>
+
+<!-- ==================== APP ==================== -->
+<div class="app" id="app" hidden>
+
+  <aside class="sb" id="sb">
+    <div class="sb-brand">Bok<span>Web</span><em>Admin</em></div>
+
+    <nav class="sb-nav">
+      <div class="sb-group">Content · კონტენტი</div>
+      <button class="sb-item is-active" data-pane="home">
+        <svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9.5 21v-6h5v6"/></svg>
+        <span>Home page &amp; general</span></button>
+      <button class="sb-item" data-pane="services">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7.5" height="7.5" rx="1.6"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.6"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.6"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.6"/></svg>
+        <span>Services page</span></button>
+      <button class="sb-item" data-pane="prices">
+        <svg viewBox="0 0 24 24"><path d="M20.6 13.4 11 3.8H4v7l9.6 9.6a2 2 0 0 0 2.8 0l4.2-4.2a2 2 0 0 0 0-2.8Z"/><circle cx="7.8" cy="7.8" r="1.4"/></svg>
+        <span>Prices page</span></button>
+      <button class="sb-item" data-pane="images">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.7"/><path d="M4 17.5 9.5 13l4 3 3-2.2 3.5 3"/></svg>
+        <span>Images</span></button>
+      <button class="sb-item" data-pane="videos">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="15" rx="2.4"/><path d="M10 9l5.4 3L10 15z" fill="currentColor" stroke="none"/></svg>
+        <span>Videos</span></button>
+      <button class="sb-item" data-pane="sections">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3.5" width="18" height="5" rx="1.4"/><rect x="3" y="11" width="10.5" height="9.5" rx="1.4"/><rect x="16" y="11" width="5" height="9.5" rx="1.4"/></svg>
+        <span>Sections</span></button>
+
+      <div class="sb-group">Inbox · შემოსული</div>
+      <button class="sb-item" data-pane="messages">
+        <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>
+        <span>Messages</span><i class="sb-badge" id="bMsg" hidden></i></button>
+      <button class="sb-item" data-pane="reviews">
+        <svg viewBox="0 0 24 24"><path d="m12 3.5 2.6 5.3 5.9.8-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.5 9.6l5.9-.8Z"/></svg>
+        <span>Reviews</span><i class="sb-badge" id="bRv" hidden></i></button>
+      <button class="sb-item" data-pane="subscribers">
+        <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 8 9 5 9-5"/><path d="M3 5h18"/></svg>
+        <span>Subscribers</span><i class="sb-badge" id="bSub" hidden></i></button>
+
+      <div class="sb-group">Settings · პარამეტრები</div>
+      <button class="sb-item" data-pane="security">
+        <svg viewBox="0 0 24 24"><path d="M12 3 5 5.8v5.4c0 4.4 3 8 7 9.8 4-1.8 7-5.4 7-9.8V5.8Z"/><path d="M9.2 12.2l2 2 3.6-4"/></svg>
+        <span>Security</span></button>
+    </nav>
+
+    <div class="sb-foot">
+      <a class="sb-view" href="./" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M14 4h6v6"/><path d="M20 4 11 13"/><path d="M19 14v5a1.5 1.5 0 0 1-1.5 1.5h-12A1.5 1.5 0 0 1 4 19V6.5A1.5 1.5 0 0 1 5.5 5H10"/></svg>
+        View website</a>
+      <div class="sb-user">
+        <span class="sb-ava" id="sbAva">A</span>
+        <span class="sb-uname" id="sbUser">admin</span>
+        <button class="sb-out" id="btnLogout" title="Log out · გასვლა">
+          <svg viewBox="0 0 24 24"><path d="M9 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h3"/><path d="M15 8l4 4-4 4"/><path d="M19 12H9"/></svg>
+        </button>
+      </div>
+    </div>
+  </aside>
+  <div class="sb-scrim" id="sbScrim"></div>
+
+  <div class="main">
+    <header class="tb">
+      <button class="tb-burger" id="tbBurger" aria-label="Menu">
+        <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <h1 class="tb-title" id="tbTitle">Home page &amp; general</h1>
+      <div class="tb-right">
+        <div class="tb-lang" id="tbLang" hidden>
+          <button data-lang="ka" class="is-active">KA</button><button data-lang="en">EN</button><button data-lang="ru">RU</button>
+        </div>
+        <span class="tb-srv" id="tbSrv"><i class="tb-dot ok"></i>Connected</span>
+      </div>
+    </header>
+
+    <div class="panes" id="panes">
+      <section class="pane is-active" id="pane-home"></section>
+      <section class="pane" id="pane-services"></section>
+      <section class="pane" id="pane-prices"></section>
+      <section class="pane" id="pane-images"></section>
+      <section class="pane" id="pane-videos"></section>
+      <section class="pane" id="pane-sections"></section>
+      <section class="pane" id="pane-messages"></section>
+      <section class="pane" id="pane-reviews"></section>
+      <section class="pane" id="pane-subscribers"></section>
+
+      <section class="pane" id="pane-security">
+        <div class="warn" id="secDefWarn" hidden>⚠ You are still using the default login
+          (<b>admin / admin123</b>) — please set your own password below.
+          · ჯერ კიდევ სტანდარტული პაროლი გაქვთ — შეცვალეთ ქვემოთ.</div>
+
+        <div class="card sec-card">
+          <h3>Admin login &amp; password · შესვლის მონაცემები</h3>
+          <p class="sub">These open the admin panel. You stay signed in on this device after changing them.</p>
+          <form id="credForm" novalidate>
+            <label class="f-lab">Current password · ამჟამინდელი პაროლი
+              <input type="password" id="secCur" autocomplete="current-password"></label>
+            <label class="f-lab">New login (optional) · ახალი მომხმარებელი
+              <input id="secUser" autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="leave empty to keep current"></label>
+            <label class="f-lab">New password · ახალი პაროლი <small>(min 6 characters)</small>
+              <input type="password" id="secNew" autocomplete="new-password" placeholder="leave empty to keep current"></label>
+            <label class="f-lab">Repeat new password · გაიმეორეთ
+              <input type="password" id="secNew2" autocomplete="new-password"></label>
+            <div class="f-actions">
+              <button class="btn btn-primary" type="submit" id="secSave">Save changes · შენახვა</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="card sec-card">
+          <h3>Admin token · ტოკენი</h3>
+          <p class="sub">The token is a <b>master key</b>: printed when the server starts and saved in
+            <code>data/secret.txt</code>. On the login screen choose “Sign in with admin token instead” —
+            it works even if you forget the password.<br><br>
+            Forgot everything? Stop the server, delete <code>data/admin-login.json</code>, start again —
+            the login resets to <b>admin / admin123</b>.<br><br>
+            Made a text mistake and saved it? The previous version of your texts is kept in
+            <code>data/site-content-prev.js</code>.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SAVE BAR ==================== -->
+<div class="savebar" id="saveBar" hidden>
+  <span class="savebar-txt">Unsaved text changes · შეუნახავი ცვლილებები</span>
+  <button class="btn savebar-btn" id="btnDiscard">Discard</button>
+  <button class="btn btn-primary savebar-btn" id="btnSave">Save changes · შენახვა</button>
+</div>
+
+<div class="toasts" id="toasts"></div>
+<script src="admin.js"></script>
+</body>
+</html>

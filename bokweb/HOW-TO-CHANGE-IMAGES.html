@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to change images — BokWeb site</title>
+<style>
+  :root{--brand:#5145c8;--ink:#16181d;--muted:#6b6b74;--line:#e6e6ee;--soft:#f5f5f9}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:#fff}
+  .wrap{max-width:1080px;margin:0 auto;padding:36px 20px 80px}
+  h1{font-size:30px;letter-spacing:-.02em;margin:0 0 6px}
+  .lead{color:var(--muted);font-size:15px;line-height:1.6;max-width:70ch;margin:0 0 8px}
+  .rule{background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:20px 0 34px;font-size:15px;line-height:1.6}
+  .rule b{color:var(--brand)}
+  h2{font-size:20px;margin:44px 0 4px;padding-top:18px;border-top:1px solid var(--line)}
+  .where{color:var(--muted);font-size:13.5px;margin:0 0 16px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+  .slot{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--soft)}
+  .slot .pv{height:130px;display:flex;align-items:center;justify-content:center;background:
+      repeating-conic-gradient(#ececf2 0 25%,#f8f8fb 0 50%) 0 0/22px 22px}
+  .slot .pv.dk{background:repeating-conic-gradient(#2a2a33 0 25%,#3a3a45 0 50%) 0 0/22px 22px}
+  .slot img,.slot video{max-width:92%;max-height:118px;object-fit:contain;display:block}
+  .slot .fn{padding:9px 11px;font-size:12.5px;font-weight:bold;word-break:break-all;background:#fff;border-top:1px solid var(--line)}
+  .slot .nt{padding:0 11px 10px;font-size:12px;color:var(--muted);background:#fff}
+  .foot{margin-top:50px;color:var(--muted);font-size:13px;line-height:1.7;border-top:1px solid var(--line);padding-top:18px}
+  code{background:var(--soft);border:1px solid var(--line);border-radius:5px;padding:1px 6px;font-size:.92em}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>How to change images / როგორ შევცვალო სურათები</h1>
+  <p class="lead">Every picture on the site is now a normal file inside the <code>images</code> folder,
+  sorted by section. Below is every image slot with a live preview of the current file.</p>
+
+  <div class="rule" style="border-color:#c9c2f2;background:#f4f2fd">
+    <b>New — Admin panel:</b> open <code>admin.html</code> in Chrome for a visual panel that replaces
+    every image and video for you (including the phone copies) and lets you hide, add or delete
+    sections — no file renaming needed.<br>
+    <b>ახალი — ადმინ პანელი:</b> გახსენით <code>admin.html</code> Chrome-ში — ვიზუალური პანელი
+    ყველა სურათის, ვიდეოსა და სექციის სამართავად.
+  </div>
+
+  <div class="rule">
+    <b>The one rule:</b> to change any picture, just <b>overwrite the file with your own image,
+    keeping the same file name</b>. You never need to touch the code.<br>
+    <b>ერთი წესი:</b> სურათის შესაცვლელად უბრალოდ <b>ჩაანაცვლეთ ფაილი თქვენი სურათით — იგივე სახელით</b>.
+    კოდში შესვლა არ გჭირდებათ.
+  </div>
+
+  <div id="app"></div>
+
+  <div class="foot">
+    <b>Extras:</b> spare/unused files live in <code>images/_extra</code> (including your ad video
+    “BokWeb Ad - Modern.mp4”) — nothing on the site uses that folder, so it's safe to keep or delete.<br>
+    <b>Plan videos (optional):</b> drop <code>basic.mp4</code>, <code>pro.mp4</code>, <code>proplus.mp4</code>
+    into the <code>videos</code> folder to add video to the Prices page hero — until then the hero
+    images above are shown.<br>
+    <b>Advanced:</b> if you ever want a different file name or a YouTube link instead, the paths sit in
+    clearly-marked blocks: portfolio → <code>script.js</code> (PROJ), services → <code>service.js</code>
+    (SVC_IMAGES), prices → <code>prices.js</code>, feature &amp; logo slots → marked with
+    <code>&lt;!-- ═══ IMAGE ═══ --&gt;</code> comments in the HTML.
+  </div>
+</div>
+
+<script src="how-to-images.js"></script>
+</body>
+</html>

@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="ka" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Security fallback for static hosting (the Node server also sends these as
+     HTTP headers, which additionally cover frame-ancestors / X-Frame-Options). -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self'; frame-src https://www.youtube.com https://www.youtube-nocookie.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+
+<!-- ============================================================
+     SEO — homepage. Georgian keywords for local search.
+     >> Replace https://bokweb.ge with your real domain if different,
+        and fill in the phone/address/social in the JSON-LD below. <<
+     ============================================================ -->
+<title>ვებსაიტების დამზადება თბილისში და საქართველოში | BokWeb</title>
+<meta name="description" content="BokWeb ქმნის სწრაფ, თანამედროვე და ბიზნესის საჭიროებებზე მორგებულ ვებსაიტებს, ონლაინ მაღაზიებსა და Landing Page-ებს საქართველოში. ფასები ₾790-დან.">
+<link rel="canonical" href="https://bokweb.ge/">
+<link rel="alternate" hreflang="ka" href="https://bokweb.ge/">
+<link rel="alternate" hreflang="x-default" href="https://bokweb.ge/">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph (Facebook / WhatsApp / Messenger link previews) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BokWeb">
+<meta property="og:locale" content="ka_GE">
+<meta property="og:title" content="ვებსაიტების დამზადება საქართველოში | BokWeb">
+<meta property="og:description" content="სწრაფი, თანამედროვე ვებსაიტები, ონლაინ მაღაზიები და Landing Page-ები ქართული ბიზნესისთვის.">
+<meta property="og:url" content="https://bokweb.ge/">
+<meta property="og:image" content="https://bokweb.ge/images/_extra/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="BokWeb — ვებსაიტების დამზადება საქართველოში">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://bokweb.ge/images/_extra/og-image.png">
+
+<!-- Structured data: tells Google you are a web-design business in Tbilisi -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "BokWeb",
+  "description": "ვებსაიტების დამზადება, საიტების აწყობა და ვებ-დიზაინი თბილისში.",
+  "url": "https://bokweb.ge/",
+  "image": "https://bokweb.ge/images/logo/logo-light.png",
+  "telephone": "+995550002724",
+  "priceRange": "₾₾",
+  "areaServed": { "@type": "City", "name": "Tbilisi" },
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Dighomi Massif, IV Quarter (დიღმის მასივი, IV კვარტალი)",
+    "addressLocality": "Tbilisi",
+    "addressRegion": "Tbilisi",
+    "addressCountry": "GE"
+  },
+  "knowsLanguage": ["ka", "en", "ru"],
+  "makesOffer": [
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "ვებ-დიზაინი" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "ვებსაიტების დამზადება" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "ონლაინ მაღაზიები" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SEO და ოპტიმიზაცია" } }
+  ]
+}
+</script>
+
+<link rel="icon" type="image/png" href="/images/logo/mark-light.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"BokWeb","url":"https://bokweb.ge/","inLanguage":"ka"}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Noto+Sans+Georgian:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header" id="header">
+  <div class="header-inner">
+
+    <!-- Brand -->
+    <a class="brand" href="/" aria-label="BokWeb — home">
+      <img class="logo logo-light" src="images/logo/logo-light.png" alt="BokWeb">
+      <img class="logo logo-dark"  src="images/logo/logo-dark.png"  alt="BokWeb">
+    </a>
+
+    <!-- Center nav -->
+    <nav class="main-nav" aria-label="Primary">
+      <a class="nav-link" href="#hero" data-i18n="nav_home">მთავარი</a>
+      <div class="nav-item" data-drop>
+        <button class="nav-trigger" aria-expanded="false" aria-haspopup="true">
+          <span data-i18n="nav_about">ჩვენ შესახებ</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="drop drop-team" role="menu" aria-label="About">
+          <a class="drop-link" href="#why" role="menuitem"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></span><span class="tx"><span class="tt" data-i18n="nav_why">რატომ BokWeb</span></span></a>
+          <a class="drop-link" href="#portfolio" role="menuitem"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></span><span class="tx"><span class="tt" data-i18n="nav_portfolio">ნამუშევრები</span></span></a>
+        </div>
+      </div>
+      <div class="nav-item" data-drop>
+        <button class="nav-trigger" aria-expanded="false" aria-haspopup="true">
+          <span data-i18n="nav_features">სერვისები</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="drop drop-work" role="menu" aria-label="Services">
+          <div class="work-grid">
+            <a class="drop-link" href="/services#svc-0" role="menuitem"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/></svg></span><span class="tx"><span class="tt" data-i18n="svc0_t">ვებ-დიზაინი</span><span class="dd" data-i18n="svc0_d">ინტერფეისი, რომელიც ქცევას იწვევს</span></span></a>
+            <a class="drop-link" href="/services#svc-1" role="menuitem"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></span><span class="tx"><span class="tt" data-i18n="svc1_t">ვებ-დეველოპმენტი</span><span class="dd" data-i18n="svc1_d">სწრაფი და მასშტაბირებადი</span></span></a>
+            <a class="drop-link" href="/services#svc-2" role="menuitem"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg></span><span class="tx"><span class="tt" data-i18n="svc2_t">ონლაინ მაღაზიები</span><span class="dd" data-i18n="svc2_d">მაღაზიები, რომ გაყიდოს</span></span></a>
+            <a class="drop-link" href="/services#svc-3" role="menuitem"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.8H20l-4.9 3.6 1.9 5.8L12 14.6 7 18.2l1.9-5.8L4 8.8h6.1z"/></svg></span><span class="tx"><span class="tt" data-i18n="svc3_t">ბრენდინგი და იდენტობა</span><span class="dd" data-i18n="svc3_d">იდენტობა და სტრატეგია</span></span></a>
+            <a class="drop-link" href="/services#svc-4" role="menuitem"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.2-4.2"/></svg></span><span class="tx"><span class="tt" data-i18n="svc4_t">SEO და ოპტიმიზაცია</span><span class="dd" data-i18n="svc4_d">გიპოვონ Google-ში</span></span></a>
+            <a class="drop-link" href="/services#svc-5" role="menuitem"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.8H20l-4.9 3.6 1.9 5.8L12 14.6 7 18.2l1.9-5.8L4 8.8h6.1z"/></svg></span><span class="tx"><span class="tt" data-i18n="svc5_t">სადესანტო გვერდები</span><span class="dd" data-i18n="svc5_d">შექმნილია კონვერსიისთვის</span></span></a>
+            <a class="drop-link" href="/services#svc-6" role="menuitem"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.6-3.1 7.6-7 9-3.9-1.4-7-4.4-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span><span class="tx"><span class="tt" data-i18n="svc6_t">მხარდაჭერა და მოვლა</span><span class="dd" data-i18n="svc6_d">საიტს ჩვენ ვუვლით</span></span></a>
+            <a class="drop-link" href="/services#svc-7" role="menuitem"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19a4.5 4.5 0 0 0 .5-8.98A6 6 0 0 0 6.3 9.5 4 4 0 0 0 7 19z"/></svg></span><span class="tx"><span class="tt" data-i18n="svc7_t">ჰოსტინგი და გამართვა</span><span class="dd" data-i18n="svc7_d">მზადაა გასაშვებად</span></span></a>
+          </div>
+          <div class="drop-foot">
+            <a href="/services" role="menuitem"><span data-i18n="svc_all">ყველა სერვისი</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item" data-drop>
+        <button class="nav-trigger" aria-expanded="false" aria-haspopup="true">
+          <span data-i18n="nav_more">მეტი</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="drop drop-team" role="menu" aria-label="More">
+          <a class="drop-link" href="/prices" role="menuitem"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4L13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><path d="M7.5 7.5h.01"/></svg></span><span class="tx"><span class="tt" data-i18n="nav_prices">ფასები</span></span></a>
+          <a class="drop-link" href="#testimonial" role="menuitem"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.8H20l-4.9 3.6 1.9 5.8L12 14.6 7 18.2l1.9-5.8L4 8.8h6.1z"/></svg></span><span class="tx"><span class="tt" data-i18n="nav_testimonials">შეფასებები</span></span></a>
+          <a class="drop-link" href="#contact" role="menuitem"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><span class="tx"><span class="tt" data-i18n="nav_contact">კონტაქტი</span></span></a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Actions -->
+    <div class="actions">
+      <!-- Language -->
+      <div class="lang" data-lang>
+        <button class="lang-trigger" aria-expanded="false" aria-haspopup="true">
+          <svg class="globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>
+          <span class="lang-code">KA</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="lang-menu" role="menu">
+          <button class="lang-opt active" data-set-lang="ka" role="menuitem">ქართული<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button>
+          <button class="lang-opt" data-set-lang="ru" role="menuitem">Русский<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button>
+          <button class="lang-opt" data-set-lang="en" role="menuitem">English<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button>
+        </div>
+      </div>
+
+      <!-- Theme -->
+      <button class="icon-btn" id="themeBtn" aria-label="Toggle dark mode" aria-pressed="false">
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+
+      <!-- Order -->
+      <a class="order-btn" href="#" data-i18n="nav_order">შეკვეთა</a>
+
+      <!-- Hamburger -->
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile drawer -->
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer" aria-label="Menu">
+  <div class="drawer-top">
+    <img class="logo logo-light" src="images/logo/logo-light.png" alt="BokWeb">
+    <img class="logo logo-dark"  src="images/logo/logo-dark.png"  alt="BokWeb">
+    <button class="icon-btn" id="drawerClose" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <div class="drawer-body">
+    <a class="m-link" href="#hero" data-i18n="nav_home">მთავარი</a>
+    <div class="m-acc" data-acc>
+      <button class="m-acc-btn">
+        <span data-i18n="nav_about">ჩვენ შესახებ</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="m-sub">
+        <a href="#why" data-i18n="nav_why">რატომ BokWeb</a>
+        <a href="#portfolio" data-i18n="nav_portfolio">ნამუშევრები</a>
+      </div>
+    </div>
+    <div class="m-acc" data-acc>
+      <button class="m-acc-btn">
+        <span data-i18n="nav_features">სერვისები</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="m-sub">
+        <a href="/services#svc-0" data-i18n="svc0_t">ვებ-დიზაინი</a>
+        <a href="/services#svc-1" data-i18n="svc1_t">ვებ-დეველოპმენტი</a>
+        <a href="/services#svc-2" data-i18n="svc2_t">ონლაინ მაღაზიები</a>
+        <a href="/services#svc-3" data-i18n="svc3_t">ბრენდინგი და იდენტობა</a>
+        <a href="/services#svc-4" data-i18n="svc4_t">SEO და ოპტიმიზაცია</a>
+        <a href="/services#svc-5" data-i18n="svc5_t">სადესანტო გვერდები</a>
+        <a href="/services#svc-6" data-i18n="svc6_t">მხარდაჭერა და მოვლა</a>
+        <a href="/services#svc-7" data-i18n="svc7_t">ჰოსტინგი და გამართვა</a>
+        <a href="/services" data-i18n="svc_all">ყველა სერვისი</a>
+      </div>
+    </div>
+    <div class="m-acc" data-acc>
+      <button class="m-acc-btn">
+        <span data-i18n="nav_more">მეტი</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="m-sub">
+        <a href="/prices" data-i18n="nav_prices">ფასები</a>
+        <a href="#testimonial" data-i18n="nav_testimonials">შეფასებები</a>
+        <a href="#contact" data-i18n="nav_contact">კონტაქტი</a>
+      </div>
+    </div>
+
+    <div class="m-divider"></div>
+    <div class="m-label" data-i18n="lang_label">ენა</div>
+    <div class="m-lang">
+      <button data-set-lang="ka" class="active">ქართული<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button>
+      <button data-set-lang="ru">Русский<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button>
+      <button data-set-lang="en">English<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></button>
+    </div>
+
+    <a class="order-btn" href="#" data-i18n="nav_order">შეკვეთა</a>
+  </div>
+</aside>
+
+<!-- ============ Ambient background (fixed, behind hero + why) ============ -->
+<div class="bw-bg" aria-hidden="true">
+  <span class="bw-blob bw-blob-1"></span>
+  <span class="bw-blob bw-blob-2"></span>
+  <span class="bw-blob bw-blob-3"></span>
+
+  <!-- drifting dot grid -->
+  <div class="bw-dotgrid"></div>
+
+  <!-- network of faint lines + pulsing nodes -->
+  <svg class="bw-net" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+    <g stroke="var(--brand)" fill="none">
+      <line x1="-60" y1="740" x2="1500" y2="270" style="vector-effect:non-scaling-stroke;opacity:.17;stroke-width:1"/>
+      <line x1="-60" y1="500" x2="1500" y2="30"  style="vector-effect:non-scaling-stroke;opacity:.13;stroke-width:1"/>
+      <line x1="-60" y1="980" x2="1500" y2="520" style="vector-effect:non-scaling-stroke;opacity:.12;stroke-width:1"/>
+      <line x1="-60" y1="120" x2="1500" y2="640" style="vector-effect:non-scaling-stroke;opacity:.12;stroke-width:1"/>
+      <line x1="-60" y1="-40" x2="1500" y2="430" style="vector-effect:non-scaling-stroke;opacity:.09;stroke-width:1"/>
+    </g>
+    <g>
+      <circle cx="300" cy="633" r="7" style="fill:var(--brand);opacity:.1"/>
+      <circle cx="300" cy="633" r="2.6" style="fill:var(--brand);animation:bwNodePulse 4.2s ease-in-out infinite"/>
+      <circle cx="930" cy="441" r="8" style="fill:var(--brand);opacity:.1"/>
+      <circle cx="930" cy="441" r="2.8" style="fill:var(--brand);animation:bwNodePulse 5s ease-in-out -1s infinite"/>
+      <circle cx="1055" cy="165" r="7" style="fill:var(--ok);opacity:.12"/>
+      <circle cx="1055" cy="165" r="2.6" style="fill:var(--ok);animation:bwNodePulse 4.6s ease-in-out -2s infinite"/>
+      <circle cx="700" cy="360" r="7" style="fill:var(--brand);opacity:.1"/>
+      <circle cx="700" cy="360" r="2.4" style="fill:var(--brand);animation:bwNodePulse 5.4s ease-in-out -3s infinite"/>
+      <circle cx="1300" cy="330" r="7" style="fill:var(--ok);opacity:.1"/>
+      <circle cx="1300" cy="330" r="2.4" style="fill:var(--ok);animation:bwNodePulse 4.8s ease-in-out -1.5s infinite"/>
+      <circle cx="150" cy="250" r="6" style="fill:var(--brand);opacity:.1"/>
+      <circle cx="150" cy="250" r="2.2" style="fill:var(--brand);animation:bwNodePulse 5.2s ease-in-out -2.5s infinite"/>
+    </g>
+  </svg>
+
+  <!-- travelling "visitor" cursors with cycling names -->
+  <div class="bw-travel bw-travel-a"><div class="bw-travel-in"><svg class="bw-cur" viewBox="12 19 15 20"><polygon points="13,20 13,34 17,30 20,38 23,37 20,29 26,26"/></svg><span class="bw-tag" data-travel="0">Anna</span></div></div>
+  <div class="bw-travel bw-travel-b"><div class="bw-travel-in"><svg class="bw-cur bw-cur-ok" viewBox="12 19 15 20"><polygon points="13,20 13,34 17,30 20,38 23,37 20,29 26,26"/></svg><span class="bw-tag bw-tag-ok" data-travel="1">Luke</span></div></div>
+  <div class="bw-travel bw-travel-c"><div class="bw-travel-in"><svg class="bw-cur bw-cur-ink" viewBox="12 19 15 20"><polygon points="13,20 13,34 17,30 20,38 23,37 20,29 26,26"/></svg><span class="bw-tag bw-tag-ink" data-travel="2">Nino</span></div></div>
+  <div class="bw-travel bw-travel-d"><div class="bw-travel-in"><svg class="bw-cur" viewBox="12 19 15 20"><polygon points="13,20 13,34 17,30 20,38 23,37 20,29 26,26"/></svg><span class="bw-tag" data-travel="3">Ana</span></div></div>
+</div>
+
+<!-- ============ HERO ============ -->
+<main class="bw-hero" id="hero">
+  <div class="bw-hero-inner">
+
+    <!-- Left — copy -->
+    <div class="bw-copy">
+      <span class="bw-eyebrow" data-i18n="hero_eyebrow">ვებ სააგენტო საქართველოში</span>
+      <h1 class="bw-title" data-i18n="hero_title">ვებსაიტების დამზადება, რომელიც თქვენს ბიზნესს ზრდაში ეხმარება</h1>
+      <p class="bw-sub" data-i18n="hero_sub">ვქმნით სწრაფ, თანამედროვე და ყველა მოწყობილობაზე მორგებულ ვებსაიტებს. BokWeb ეხმარება ქართულ ბიზნესებს პროფესიონალურად წარმოაჩინონ თავიანთი მომსახურება, მოიზიდონ ახალი მომხმარებლები და ონლაინ ვიზიტები რეალურ შეკვეთებად აქციონ.</p>
+      <div class="bw-cta-row">
+        <button class="bw-btn bw-btn-primary bw-order-open" type="button">
+          <span class="bw-btn-fill"></span>
+          <span class="bw-btn-label"><span class="bw-spin" hidden></span><span class="bw-cta-text" data-i18n="hero_cta1">მიიღეთ უფასო კონსულტაცია</span></span>
+        </button>
+        <a class="bw-btn bw-btn-ghost" href="#portfolio" data-i18n="hero_cta2">ნახეთ ჩვენი პროექტები</a>
+      </div>
+      <p class="bw-note" data-i18n="hero_note">დაგვიკავშირდით მეილზე ან ტელეფონზე და ითანამშრომლეთ BokWeb-ის გუნდთან.</p>
+    </div>
+
+    <!-- Right — animated product mockup -->
+    <div class="bw-visual">
+      <div class="bw-stage">
+        <div class="bw-mock" id="bwMock">
+          <div class="bw-mock-float">
+            <div class="bw-window">
+
+              <div class="bw-winbar">
+                <div class="bw-dots"><span class="bw-dot"></span><span class="bw-dot"></span><span class="bw-dot"></span></div>
+                <div class="bw-url"><span class="bw-url-lock"></span><span class="bw-url-text">yourbusiness.ge</span></div>
+                <span class="bw-winbar-pad"></span>
+              </div>
+
+              <div class="bw-winbody">
+                <div class="bw-row bw-row-head">
+                  <div class="bw-brandline"><span class="bw-brandmark"></span><span class="bw-brandname"></span></div>
+                  <div class="bw-navline"><span class="bw-navpill"></span><span class="bw-navpill"></span><span class="bw-navpill"></span></div>
+                </div>
+                <div class="bw-heads"><div class="bw-headline"></div><div class="bw-subline"></div></div>
+                <div class="bw-grid">
+                  <div class="bw-card bw-card-a"><div class="bw-thumb"><span class="bw-thumb-o"></span></div><div class="bw-line bw-line-80"></div><div class="bw-price">45 ₾</div></div>
+                  <div class="bw-card bw-card-b"><div class="bw-thumb"><span class="bw-thumb-sq"></span></div><div class="bw-line bw-line-65"></div><div class="bw-price">68 ₾</div></div>
+                  <div class="bw-card"><div class="bw-thumb"><span class="bw-thumb-ring"></span></div><div class="bw-line bw-line-72"></div><div class="bw-price">32 ₾</div></div>
+                </div>
+                <div class="bw-row bw-row-foot">
+                  <div><div class="bw-fline bw-fline-1"></div><div class="bw-fline bw-fline-2"></div></div>
+                  <div class="bw-buy"><span class="bw-buy-ring"></span><span class="bw-buy-btn" data-i18n="hero_contact">დაკავშირება</span></div>
+                </div>
+              </div>
+
+              <!-- roaming visitor cursor -->
+              <div class="bw-roam"><div class="bw-roam-in"><svg class="bw-cur bw-cur-ok" viewBox="12 19 15 20"><polygon points="13,20 13,34 17,30 20,38 23,37 20,29 26,26"/></svg><span class="bw-tag bw-tag-ok">Ana</span></div></div>
+              <!-- clicking cursor -->
+              <div class="bw-cursor"><div class="bw-cursor-in"><svg class="bw-cur" viewBox="12 19 15 20"><polygon points="13,20 13,34 17,30 20,38 23,37 20,29 26,26"/></svg><span class="bw-tag">Nino</span></div></div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating chips (desktop) -->
+        <div class="bw-chips" aria-hidden="true">
+          <div class="bw-chip bw-chip-first"><span class="bw-chip-dot"></span><span data-i18n="hero_ch_first">პირველი შთაბეჭდილება</span></div>
+          <div class="bw-chip bw-chip-browse"><span class="bw-chip-dot"></span><span data-i18n="hero_ch_browse">მარტივი დათვალიერება</span></div>
+          <div class="bw-chip bw-chip-clients"><span class="bw-chip-dot bw-dot-ok"></span><span data-i18n="hero_ch_clients">მეტი კლიენტი</span></div>
+          <div class="bw-chip bw-chip-products"><span class="bw-chip-dot"></span><span data-i18n="hero_ch_products">პროდუქტები და ფასები</span></div>
+          <div class="bw-chip bw-chip-quick"><span class="bw-chip-dot bw-dot-ok"></span><span data-i18n="hero_ch_quick">სწრაფი კავშირი</span></div>
+          <div class="bw-chip bw-chip-newreq"><span class="bw-chip-check"><span class="bw-check"></span></span><span data-i18n="hero_newreq">ახალი შეკვეთა</span></div>
+        </div>
+      </div>
+
+      <!-- Chips (mobile row) -->
+      <div class="bw-chips-m">
+        <span class="bw-chip-m"><span class="bw-chip-dot"></span><span data-i18n="hero_ch_first">პირველი შთაბეჭდილება</span></span>
+        <span class="bw-chip-m"><span class="bw-chip-dot bw-dot-ok"></span><span data-i18n="hero_ch_clients">მეტი კლიენტი</span></span>
+        <span class="bw-chip-m"><span class="bw-chip-dot"></span><span data-i18n="hero_ch_browse">მარტივი დათვალიერება</span></span>
+        <span class="bw-chip-m"><span class="bw-chip-dot"></span><span data-i18n="hero_ch_products">პროდუქტები და ფასები</span></span>
+        <span class="bw-chip-m"><span class="bw-chip-dot bw-dot-ok"></span><span data-i18n="hero_ch_quick">სწრაფი კავშირი</span></span>
+        <span class="bw-chip-m"><span class="bw-chip-check"><span class="bw-check"></span></span><span data-i18n="hero_newreq">ახალი შეკვეთა</span></span>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<!-- ============ WHY BOKWEB ============ -->
+<!-- ================= INTRO (SEO) ================= -->
+<section class="bw-intro" id="about" aria-labelledby="introTitle">
+  <div class="bw-intro-in">
+    <h2 id="introTitle" data-i18n="intro_h2">პროფესიონალური ვებსაიტის შექმნა ბიზნესისთვის</h2>
+    <p data-i18n="intro_p1">კარგი ვებსაიტი მხოლოდ ვიზუალურად ლამაზი გვერდი არ არის. მან მომხმარებელს სწრაფად უნდა აუხსნას, რას სთავაზობს ბიზნესი, რატომ უნდა ენდოს მას და როგორ შეუძლია დაკავშირება ან შეკვეთის გაკეთება.</p>
+    <p data-i18n="intro_p2">BokWeb ქმნის ინდივიდუალურ ვებსაიტებს მცირე და საშუალო ბიზნესებისთვის საქართველოში. თითოეული პროექტი იგეგმება კომპანიის საქმიანობის, სამიზნე აუდიტორიისა და ბიზნეს მიზნების მიხედვით. ყურადღებას ვაქცევთ დიზაინს, ჩატვირთვის სისწრაფეს, მობილურ ვერსიას, მარტივ ნავიგაციასა და Google-ისთვის გასაგებ სტრუქტურას.</p>
+    <p class="bw-intro-links">
+        <a href="/services" data-i18n="intro_l1">ვებსაიტების დამზადების მომსახურება</a>
+        <a href="/services#svc-2" data-i18n="intro_l2">ონლაინ მაღაზიის შექმნა</a>
+        <a href="/prices" data-i18n="intro_l3">ვებსაიტის დამზადების ფასი</a>
+      </p>
+  </div>
+</section>
+<section class="bw-why" id="why">
+  <div class="bw-why-inner">
+    <div class="bw-why-head">
+      <span class="bw-eyebrow" data-reveal="0" data-i18n="why_eyebrow">რატომ BokWEB ?</span>
+      <h2 class="bw-why-title" data-reveal="1" data-i18n="why_title">ყველაფერი, რაც ბიზნესს სჭირდება, რომ აირჩიონ</h2>
+      <p class="bw-why-sub" data-reveal="2" data-i18n="why_sub">რთული სიტყვების გარეშე. უბრალოდ საიტი, რომელიც პროფესიონალურად გამოიყურება, მარტივი გამოსაყენებელია და მშვიდად მოგიყვანთ ახალ კლიენტებს.</p>
+    </div>
+
+    <div class="bw-why-grid">
+      <div class="bw-card2" data-reveal="0">
+        <div class="bw-ic"><svg viewBox="0 0 24 24"><path d="M12 3.4l2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.2-4.1 5.8-.8z"/></svg></div>
+        <h3 data-i18n="why_c1_t">პირველი შთაბეჭდილება</h3>
+        <p data-i18n="why_c1_b">სუფთა, თანამედროვე იერსახე, რომელიც პირველივე წამიდან ნდობას იწვევს.</p>
+      </div>
+      <div class="bw-card2" data-reveal="1">
+        <div class="bw-ic"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.2-4.2"/></svg></div>
+        <h3 data-i18n="why_c2_t">მარტივი დათვალიერება</h3>
+        <p data-i18n="why_c2_b">გასაგები, მარტივი გვერდები. ნებისმიერი კლიენტი საჭიროს რამდენიმე შეხებით იპოვის.</p>
+      </div>
+      <div class="bw-card2" data-reveal="2">
+        <div class="bw-ic"><svg viewBox="0 0 24 24"><path d="M13.4 3H20a1 1 0 0 1 1 1v6.6a1 1 0 0 1-.3.7l-9 9a1 1 0 0 1-1.4 0l-6.6-6.6a1 1 0 0 1 0-1.4l9-9a1 1 0 0 1 .7-.3z"/><circle cx="16.4" cy="7.6" r="1.4"/></svg></div>
+        <h3 data-i18n="why_c3_t">პროდუქტები და ფასები</h3>
+        <p data-i18n="why_c3_b">აჩვენეთ შემოთავაზება ფოტოებითა და ფასებით. ადამიანები უფრო სწრაფად და დარწმუნებით წყვეტენ.</p>
+      </div>
+      <div class="bw-card2" data-reveal="3">
+        <div class="bw-ic"><svg viewBox="0 0 24 24"><path d="M4 5h16v10H9l-5 4z"/></svg></div>
+        <h3 data-i18n="why_c4_t">სწრაფი კავშირი</h3>
+        <p data-i18n="why_c4_b">ზარი, შეტყობინება ან შეკვეთა ერთი შეხებით. თქვენთან დაკავშირება მარტივია.</p>
+      </div>
+      <div class="bw-card2" data-reveal="4">
+        <div class="bw-ic"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0"/><path d="M15.6 5.2a3.2 3.2 0 0 1 0 5.9"/><path d="M17 13.5a5.5 5.5 0 0 1 3.5 5.1"/></svg></div>
+        <h3 data-i18n="why_c5_t">მეტი კლიენტი</h3>
+        <p data-i18n="why_c5_b">საიტი მუშაობს დღე და ღამე და სტუმრებს რეალურ შეკვეთებად აქცევს.</p>
+      </div>
+      <div class="bw-card2" data-reveal="5">
+        <div class="bw-ic"><svg viewBox="0 0 24 24"><rect x="3" y="4.5" width="12.5" height="9.5" rx="1.4"/><path d="M6.5 17.5h6"/><path d="M9.2 14v3.5"/><rect x="16.5" y="8.5" width="5.5" height="10" rx="1.3"/></svg></div>
+        <h3 data-i18n="why_c6_t">მშვენივრად ჩანს ყველგან</h3>
+        <p data-i18n="why_c6_b">იდეალურია ტელეფონზე, ტაბლეტსა და კომპიუტერზე. ვერცერთი კლიენტი ვერ დაიკარგება.</p>
+      </div>
+    </div>
+
+    <div class="bw-why-cta" data-reveal="0">
+      <div>
+        <h3 data-i18n="why_cta">მზად ხართ, უფრო ხშირად აგირჩიონ?</h3>
+        <p data-i18n="why_note">უფასო კონსულტაცია. ვპასუხობთ იმავე დღეს.</p>
+      </div>
+      <button class="bw-btn bw-btn-primary bw-order-open" type="button">
+        <span class="bw-btn-fill"></span>
+        <span class="bw-btn-label"><span class="bw-spin" hidden></span><span class="bw-cta-text" data-i18n="hero_cta1">მიიღეთ უფასო კონსულტაცია</span></span>
+      </button>
+    </div>
+  </div>
+</section>
+<!-- ============ PORTFOLIO ============ -->
+<section class="bw-portfolio" id="portfolio">
+  <div class="bw-sec-inner">
+    <div class="bw-sec-head">
+      <span class="bw-eyebrow" data-reveal="0" data-i18n="pf_eyebrow">ნამუშევრები</span>
+      <h2 class="bw-sec-title" data-reveal="1" data-i18n="pf_title">საიტები, რომლებიც მუშაობს მფლობელებისთვის</h2>
+      <p class="bw-sec-sub" data-reveal="2" data-i18n="pf_sub">რამდენიმე ბიზნესი, რომელსაც დავეხმარეთ. რეალური საიტები და რეალური შეკვეთები.</p>
+    </div>
+  </div>
+
+  <div class="bw-pf-band" data-reveal="3">
+    <div class="bw-pf-prog"><span class="bw-pf-prog-fill" id="bwPfProg"></span></div>
+    <div class="bw-pf-stage" id="bwTrack"></div>
+    <div class="bw-swipe-hint" id="bwPfHint" aria-hidden="true">
+      <span class="bw-swipe-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7l-5 5 5 5M15 7l5 5-5 5"/></svg></span>
+      <span data-i18n="swipe_hint">გადაფურცლეთ</span>
+    </div>
+  </div>
+
+  <div class="bw-sec-inner">
+    <div class="bw-thumbs" id="bwThumbs" data-reveal="4"></div>
+  </div>
+</section>
+
+<!-- ============ FEATURES ============ -->
+<section class="bw-features" id="features">
+  <div class="bw-sec-inner">
+    <div class="bw-feat-rows">
+      <div class="bw-feat-row" data-reveal="0">
+        <div class="bw-feat-media">
+          <!-- ═══ IMAGE — file: images/features/feature-1.png ═══ -->
+          <img src="images/features/feature-1.png" alt="პროდუქტების გვერდი ფოტოებითა და ფასებით — BokWeb საიტის მაგალითი" loading="lazy">
+          <span class="bw-ph-ic"></span><span class="bw-ph-tx" data-i18n="pf_drop"></span>
+        </div>
+        <div class="bw-feat-text">
+          <div class="bw-feat-num">01</div>
+          <div class="bw-feat-ic"><svg viewBox="0 0 24 24"><path d="M13.4 3H20a1 1 0 0 1 1 1v6.6a1 1 0 0 1-.3.7l-9 9a1 1 0 0 1-1.4 0l-6.6-6.6a1 1 0 0 1 0-1.4l9-9a1 1 0 0 1 .7-.3z"/><circle cx="16.4" cy="7.6" r="1.4"/></svg></div>
+          <h3 data-i18n="f1_t">აჩვენეთ, რას ყიდით</h3>
+          <p data-i18n="f1_d">გასაგები გვერდები პროდუქტებით, ფოტოებითა და ფასებით, რომ ხალხი წამებში მიხვდეს თქვენს შეთავაზებას.</p>
+        </div>
+      </div>
+
+      <div class="bw-feat-row bw-feat-rev" data-reveal="1">
+        <div class="bw-feat-media">
+          <!-- ═══ IMAGE — file: images/features/feature-2.png ═══ -->
+          <img src="images/features/feature-2.png" alt="სწრაფი დაკავშირების ღილაკი ვებსაიტზე — ზარი და შეტყობინება ერთი შეხებით" loading="lazy">
+          <span class="bw-ph-ic"></span><span class="bw-ph-tx" data-i18n="pf_drop"></span>
+        </div>
+        <div class="bw-feat-text">
+          <div class="bw-feat-num">02</div>
+          <div class="bw-feat-ic"><svg viewBox="0 0 24 24"><path d="M4 5h16v10H9l-5 4z"/></svg></div>
+          <h3 data-i18n="f2_t">გააადვილეთ კავშირი</h3>
+          <p data-i18n="f2_d">ხილული ღილაკი ყველა გვერდზე. ზარი, შეტყობინება ან შეკვეთა ერთი შეხებით, ნებისმიერი მოწყობილობიდან.</p>
+        </div>
+      </div>
+
+      <div class="bw-feat-row" data-reveal="2">
+        <div class="bw-feat-media">
+          <!-- ═══ IMAGE — file: images/features/feature-3.png ═══ -->
+          <img src="images/features/feature-3.png" alt="შეკვეთის შეტყობინებების მიღება საიტიდან — BokWeb ადმინ პანელი" loading="lazy">
+          <span class="bw-ph-ic"></span><span class="bw-ph-tx" data-i18n="pf_drop">ჩააგდეთ სქრინშოტი</span>
+        </div>
+        <div class="bw-feat-text">
+          <div class="bw-feat-num">03</div>
+          <div class="bw-feat-ic"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 8-3 8h18s-3-1-3-8"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></div>
+          <h3 data-i18n="f3_t">აქციეთ ვიზიტები შეკვეთებად</h3>
+          <p data-i18n="f3_d">როცა ვინმე დაგიკავშირდებათ, იღებთ სუფთა შეტყობინებას და ვერცერთი კლიენტი ვერ იკარგება.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIAL ============ -->
+<section class="bw-testi" id="testimonial">
+  <div class="bw-testi-track" id="bwTestiTrack">
+    <div class="bw-testi-inner bw-testi-default" data-reveal="0">
+      <svg class="bw-quote-mark" viewBox="0 0 40 32" aria-hidden="true"><path d="M0 32V18C0 8 6 1.5 16 0l2 5C12 6.5 9 10 9 14h7v18H0zm22 0V18C22 8 28 1.5 38 0l2 5c-6 1.5-9 5-9 9h7v18H22z"/></svg>
+      <blockquote class="bw-quote" data-i18n="ts_quote">BokWeb-მა შეგვიქმნა საიტი, რომელსაც რეალურად მოაქვს ზარები. პროფესიონალურად გამოვიყურებით და კლიენტები მარტივად გვპოულობენ.</blockquote>
+      <div class="bw-testi-avatar" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.5" r="3.6"/><path d="M5 20a7 7 0 0 1 14 0"/></svg>
+      </div>
+      <div class="bw-testi-author" data-i18n="ts_author">ზურაბ ბოკერია</div>
+      <div class="bw-testi-role" data-i18n="ts_role">myevcar.ge</div>
+    </div>
+  </div>
+  <div class="bw-testi-more-wrap" id="bwTestiMoreWrap" hidden>
+    <button class="bw-btn bw-testi-more" type="button" id="bwTestiMore"></button>
+  </div>
+  <div class="bw-rv-actions"><button class="bw-btn bw-btn-primary" type="button" id="bwRvOpen" data-i18n="rv_write">დაწერეთ შეფასება</button></div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bw-footer" id="contact">
+  <div class="bw-foot-inner">
+    <div class="bw-foot-top">
+
+      <div class="bw-foot-brand">
+        <!-- ═══ LOGO (footer) — file: images/logo/logo-light.png / logo-dark.png ═══ -->
+        <img class="bw-foot-logo logo-light" src="images/logo/logo-light.png" alt="BokWeb">
+        <img class="bw-foot-logo logo-dark"  src="images/logo/logo-dark.png"  alt="BokWeb">
+        <p class="bw-foot-tag" data-i18n="foot_tag">საიტები, რომლებიც ადგილობრივ ბიზნესს ახალ კლიენტებს მოაქვს.</p>
+        <div class="bw-foot-contact">
+          <a class="bw-foot-phone" href="tel:+995550002724">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.6a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.5-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.6 2.6.7a2 2 0 0 1 1.7 2z"/></svg>
+            <span>+995 550 00 27 24</span>
+          </a>
+          <div class="bw-foot-addr">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span data-i18n="foot_addr">დიღმის მასივი, IV კვარტალი, თბილისი</span>
+          </div>
+        </div>
+      </div>
+
+      <nav class="bw-foot-cols" id="bwFootCols" aria-label="Footer"></nav>
+
+      <div class="bw-foot-news">
+        <div class="bw-foot-news-title" data-i18n="foot_cta">რჩევები თქვენი საიტისთვის</div>
+        <p class="bw-foot-news-sub" data-i18n="foot_sub">თვეში ერთი მოკლე წერილი. სპამის გარეშე, გამოწერის გაუქმება ნებისმიერ დროს.</p>
+        <div class="bw-sub-form" id="bwSubForm">
+          <input class="bw-sub-input" type="email" id="bwSubEmail" data-i18n-ph="foot_ph" placeholder="თქვენი email">
+          <button class="bw-btn bw-btn-primary bw-sub-btn" type="button" id="bwSubBtn" data-i18n="foot_btn">გამოწერა</button>
+        </div>
+        <div class="bw-sub-thanks" id="bwSubThanks" hidden>
+          <span class="bw-chip-check"><span class="bw-check"></span></span>
+          <span data-i18n="foot_thanks">გმადლობთ, გამოწერილია.</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="bw-foot-bottom">
+      <span class="bw-foot-copy">© 2026 BokWeb. <span data-i18n="foot_rights">ყველა უფლება დაცულია.</span></span>
+      <div class="bw-foot-social">
+        <a href="https://wa.me/995550002724" target="_blank" rel="noopener" aria-label="WhatsApp +995 550 00 27 24"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 1.67c2.2 0 4.27.86 5.83 2.42a8.2 8.2 0 0 1 2.42 5.82c0 4.54-3.7 8.24-8.25 8.24a8.2 8.2 0 0 1-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24zm-4.53 4.4c-.21 0-.56.08-.85.4-.29.32-1.11 1.08-1.11 2.64s1.14 3.06 1.3 3.27c.16.21 2.24 3.42 5.42 4.8.76.32 1.35.52 1.81.66.76.24 1.45.21 2 .13.61-.09 1.87-.76 2.14-1.5.26-.74.26-1.37.18-1.5-.08-.13-.29-.21-.61-.37-.32-.16-1.87-.92-2.16-1.03-.29-.11-.5-.16-.71.16-.21.32-.82 1.03-1 1.24-.18.21-.37.24-.68.08-.32-.16-1.34-.49-2.55-1.57-.94-.84-1.58-1.88-1.77-2.2-.18-.32-.02-.49.14-.65.14-.14.32-.37.48-.55.16-.19.21-.32.32-.53.11-.21.05-.4-.03-.55-.08-.16-.71-1.71-.97-2.34-.26-.62-.52-.53-.71-.54h-.6z"/></svg></a>
+        <a href="tel:+995550002724" aria-label="Call +995 550 00 27 24"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.6a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.5-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.6 2.6.7a2 2 0 0 1 1.7 2z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ ORDER OVERLAY ============ -->
+<div class="bw-order" id="bwOrder" hidden aria-hidden="true">
+  <div class="bw-order-bg" aria-hidden="true">
+    <div class="bw-order-dots"></div>
+    <div class="bw-order-blob"></div>
+  </div>
+  <div class="bw-order-inner">
+    <div class="bw-order-top">
+      <button class="bw-back" type="button" id="bwOrderBack"><span class="bw-back-arrow"></span><span data-i18n="ob_back">უკან</span></button>
+      <!-- ═══ LOGO MARK (order page) — file: images/logo/mark-light.png / mark-dark.png ═══ -->
+      <img class="bw-order-logo logo-light" src="images/logo/mark-light.png" alt="BokWeb">
+      <img class="bw-order-logo logo-dark"  src="images/logo/mark-dark.png"  alt="BokWeb">
+    </div>
+
+    <div class="bw-order-card" id="bwOrderForm">
+      <h2 data-i18n="ob_title">დავიწყოთ თქვენი საიტი</h2>
+      <p class="bw-order-sub" data-i18n="ob_sub">მოგვიყევით ცოტა თქვენს ბიზნესზე. ვპასუხობთ იმავე დღეს. ვალდებულების გარეშე.</p>
+      <div class="bw-field-grid">
+        <label class="bw-field"><span data-i18n="ob_name">თქვენი სახელი</span><input id="bwOName" type="text" data-i18n-ph="ob_name_p" placeholder="მაგ. ნინო"></label>
+        <label class="bw-field"><span data-i18n="ob_biz">ბიზნესის სახელი</span><input id="bwOBiz" type="text" data-i18n-ph="ob_biz_p" placeholder="მაგ. Anna Flowers"></label>
+      </div>
+      <label class="bw-field"><span data-i18n="ob_contact">ტელეფონი ან email</span><input id="bwOContact" type="text" data-i18n-ph="ob_contact_p" placeholder="როგორ დაგიკავშირდეთ?"></label>
+      <label class="bw-field"><span data-i18n="ob_msg">რა გჭირდებათ?</span><textarea id="bwOMsg" rows="3" data-i18n-ph="ob_msg_p" placeholder="მაღაზია, ჩაწერის გვერდი, ახალი იერსახე…"></textarea></label>
+      <input class="bw-hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="bw-order-err" id="bwOrderErr" hidden data-i18n="ob_err">ვერ გაიგზავნა — სცადეთ თავიდან.</div>
+      <button class="bw-btn bw-btn-primary bw-order-submit" type="button" id="bwOrderSend"><span class="bw-btn-label"><span data-i18n="ob_send">გაგზავნა</span></span></button>
+
+      <div class="bw-order-or"><span data-i18n="ob_or">ან დაგვიკავშირდით პირდაპირ</span></div>
+      <div class="bw-quick-contact">
+        <a class="bw-qc-btn bw-qc-wa" href="https://wa.me/995550002724" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 1.67c2.2 0 4.27.86 5.83 2.42a8.2 8.2 0 0 1 2.42 5.82c0 4.54-3.7 8.24-8.25 8.24a8.2 8.2 0 0 1-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24zm-4.53 4.4c-.21 0-.56.08-.85.4-.29.32-1.11 1.08-1.11 2.64s1.14 3.06 1.3 3.27c.16.21 2.24 3.42 5.42 4.8.76.32 1.35.52 1.81.66.76.24 1.45.21 2 .13.61-.09 1.87-.76 2.14-1.5.26-.74.26-1.37.18-1.5-.08-.13-.29-.21-.61-.37-.32-.16-1.87-.92-2.16-1.03-.29-.11-.5-.16-.71.16-.21.32-.82 1.03-1 1.24-.18.21-.37.24-.68.08-.32-.16-1.34-.49-2.55-1.57-.94-.84-1.58-1.88-1.77-2.2-.18-.32-.02-.49.14-.65.14-.14.32-.37.48-.55.16-.19.21-.32.32-.53.11-.21.05-.4-.03-.55-.08-.16-.71-1.71-.97-2.34-.26-.62-.52-.53-.71-.54h-.6z"/></svg>
+          <span>WhatsApp</span>
+        </a>
+        <a class="bw-qc-btn bw-qc-call" href="tel:+995550002724">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.6a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.5-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.6 2.6.7a2 2 0 0 1 1.7 2z"/></svg>
+          <span data-i18n="ob_call">დარეკვა</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="bw-order-card bw-order-done" id="bwOrderDone" hidden>
+      <div class="bw-done-ic"><span class="bw-check-lg"></span></div>
+      <h2 data-i18n="ob_sent_title">შეკვეთა მიღებულია</h2>
+      <p class="bw-order-sub" data-i18n="ob_sent_text">გმადლობთ! ჩვენი გუნდი მალე დაგიკავშირდებათ საიტის დასაგეგმად.</p>
+      <button class="bw-btn bw-btn-primary bw-order-back2" type="button"><span class="bw-btn-label"><span data-i18n="ob_back">უკან</span></span></button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ Review modal ═══ -->
+<div class="bw-rv-modal" id="bwRvModal" hidden role="dialog" aria-modal="true" aria-label="Review">
+  <div class="bw-rv-box">
+    <button class="bw-rv-x" id="bwRvClose" type="button" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <div id="bwRvFormBox">
+      <h3 data-i18n="rv_title">თქვენი შეფასება</h3>
+      <label class="bw-field"><span data-i18n="rv_name">სახელი</span><input id="bwRvName" type="text" maxlength="60" data-i18n-ph="ob_name_p" placeholder="მაგ. ნინო"></label>
+      <label class="bw-field"><span data-i18n="rv_text">კომენტარი</span><textarea id="bwRvText" rows="4" maxlength="1200" data-i18n-ph="rv_text_p" placeholder="როგორი იყო ჩვენთან მუშაობა?"></textarea></label>
+      <div class="bw-field"><span data-i18n="rv_rating">შეფასება (1–10)</span>
+        <div class="bw-rv-stars" id="bwRvStars" role="radiogroup"></div>
+      </div>
+      <input class="bw-hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="bw-order-err" id="bwRvErr" hidden data-i18n="ob_err">ვერ გაიგზავნა — სცადეთ თავიდან.</div>
+      <button class="bw-btn bw-btn-primary" type="button" id="bwRvSend" data-i18n="rv_send">გაგზავნა</button>
+    </div>
+    <div id="bwRvDoneBox" hidden>
+      <h3 data-i18n="rv_done_t">მადლობა!</h3>
+      <p class="bw-order-sub" id="bwRvDoneMsg" data-i18n="rv_done_x">თქვენი შეფასება გამოჩნდება დადასტურების შემდეგ.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ FLOATING CONTACT BUTTONS ============ -->
+<div class="bw-fab" aria-label="Quick contact">
+  <a class="bw-fab-btn bw-fab-wa" href="https://wa.me/995550002724" target="_blank" rel="noopener" aria-label="WhatsApp +995 550 00 27 24">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 1.67c2.2 0 4.27.86 5.83 2.42a8.2 8.2 0 0 1 2.42 5.82c0 4.54-3.7 8.24-8.25 8.24a8.2 8.2 0 0 1-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24zm-4.53 4.4c-.21 0-.56.08-.85.4-.29.32-1.11 1.08-1.11 2.64s1.14 3.06 1.3 3.27c.16.21 2.24 3.42 5.42 4.8.76.32 1.35.52 1.81.66.76.24 1.45.21 2 .13.61-.09 1.87-.76 2.14-1.5.26-.74.26-1.37.18-1.5-.08-.13-.29-.21-.61-.37-.32-.16-1.87-.92-2.16-1.03-.29-.11-.5-.16-.71.16-.21.32-.82 1.03-1 1.24-.18.21-.37.24-.68.08-.32-.16-1.34-.49-2.55-1.57-.94-.84-1.58-1.88-1.77-2.2-.18-.32-.02-.49.14-.65.14-.14.32-.37.48-.55.16-.19.21-.32.32-.53.11-.21.05-.4-.03-.55-.08-.16-.71-1.71-.97-2.34-.26-.62-.52-.53-.71-.54h-.6z"/></svg>
+    <span class="bw-fab-tip">WhatsApp</span>
+  </a>
+  <a class="bw-fab-btn bw-fab-call" href="tel:+995550002724" aria-label="Call +995 550 00 27 24">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.6a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.5-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.6 2.6.7a2 2 0 0 1 1.7 2z"/></svg>
+    <span class="bw-fab-tip" data-i18n="ob_call">დარეკვა</span>
+  </a>
+</div>
+
+<script src="site-content.js"></script>
+<script src="site-config.js"></script>
+<script src="config-loader.js"></script>
+<script src="script.js"></script>
+<script src="lightbox.js"></script>
+<script src="reviews-widget.js"></script>
+</body>
+</html>
